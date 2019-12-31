@@ -1,0 +1,30 @@
+<div class="container p-5">
+  <div class="d-flex justify-content-center">
+    <h2 class="text-center">Student Result Board</h2>
+  </div>
+  <div class="d-flex">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Student Name</th>
+            <th scope="col">Roll Number</th>
+            <th scope="col">Total Marks</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of studentData" [ngClass]="{'green':topScore === data.marks.Maths+data.marks.English+data.marks.Science,'red': data.marks.Maths < 20}">            
+            <td>{{data.name | titlecase }}</td>
+            <td>{{data.rollNumber}}</td>
+            <td>{{data.marks.Maths+data.marks.English+data.marks.Science}}</td>
+            <td>{{studentStatus}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div><button type="button" class="btn btn-info" routerLink="/data/form">Student Form</button></div>
+  </div>
+</div>

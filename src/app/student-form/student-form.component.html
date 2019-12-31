@@ -1,0 +1,57 @@
+<!-- app.component.html -->
+
+<div class="container p-5">
+  
+    <div class="d-flex justify-content-center">
+        <div><button type="button" class="btn btn-info" routerLink="/data">Home Page</button></div>
+      </div>
+    <h3 class="text-center">
+     Student Form
+    </h3>
+    <form [formGroup]="studentForm" novalidate>
+          <div class="form-group">
+              <input class="form-control" placeholder="First Name" formControlName="fname" type="text" maxlength="20" pattern="[a-zA-Z]" />
+          </div>
+          <div *ngIf="studentForm.controls['fname'].invalid && (studentForm.controls['fname'].dirty || studentForm.controls['fname'].touched)" class="alert alert-danger">
+              <div *ngIf="studentForm.controls['fname'].errors.required">
+                First Name is required.
+              </div>
+          </div>
+          <div class="form-group">
+              <input class="form-control" placeholder="Last Name" formControlName="lname" type="text" maxlength="20" pattern="[a-zA-Z]" />
+          </div>
+          <div *ngIf="studentForm.controls['lname'].invalid && (studentForm.controls['lname'].dirty || studentForm.controls['lname'].touched)" class="alert alert-danger">
+              <div *ngIf="studentForm.controls['lname'].errors.required">
+                Last Name is required.
+              </div>
+          </div>
+           <div class="form-group">
+              <input class="form-control" placeholder="Class" formControlName="class" type="text">
+          </div>
+          <div *ngIf="studentForm.controls['class'].invalid && (studentForm.controls['class'].dirty || studentForm.controls['class'].touched)" class="alert alert-danger">
+              <div *ngIf="studentForm.controls['class'].errors.required">
+                Class is required.
+              </div>
+          </div>
+          <div class="form-group">
+              <input class="form-control" placeholder="Year Of Passing" formControlName="year" type="number" max="2017" min="2000">
+          </div>
+          <div *ngIf="studentForm.controls['year'].invalid && (studentForm.controls['year'].dirty || studentForm.controls['year'].touched)" class="alert alert-danger">
+              <div *ngIf="studentForm.controls['year'].errors.required">
+                Year is required.
+              </div>
+          </div>
+          <div class="form-group">
+              <input class="form-control" placeholder="Marks in Percentage" formControlName="marks" type="number">
+          </div>
+          <div *ngIf="studentForm.controls['marks'].invalid && (studentForm.controls['marks'].dirty || studentForm.controls['marks'].touched)" class="alert alert-danger">
+              <div *ngIf="studentForm.controls['marks'].errors.required">
+                Percentage is required.
+              </div>
+          </div>
+          <button type="submit"
+              [disabled]="studentForm.pristine || studentForm.invalid" class="btn btn-success">
+              Send
+          </button>
+    </form>
+  </div>
